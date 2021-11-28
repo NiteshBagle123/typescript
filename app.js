@@ -1,8 +1,10 @@
 var add = function (a, b) {
-    if (typeof a === 'number' && typeof b === 'number') {
-        return a + b;
-    }
-    return "".concat(a, " ").concat(b);
+    return a + b;
 };
-console.log(add('Nitesh', 'Bagle'));
-console.log(add(1, 2));
+var combineResult;
+combineResult = add;
+console.log(combineResult(1, 3));
+var addAndHandle = function (a, b, cb) { return cb(a + b); };
+addAndHandle(1, 10, function (res) {
+    console.log('Print result', res);
+});

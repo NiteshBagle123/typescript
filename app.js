@@ -1,13 +1,13 @@
+"use strict";
 // unknow type
-var userInput;
-var userName;
+let userInput;
+let userName;
 userInput = 10;
-userInput = '10';
 if (typeof userInput === 'string') {
     userName = userInput;
 }
 // never type
-var error = function (message, code) {
-    throw { message: message, code: code };
+const error = (message, code) => {
+    throw { message, code };
 };
 error('not found', 404);

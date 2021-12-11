@@ -1,17 +1,48 @@
-// unknow type
-let userInput: unknown;
-let userName: string;
+interface Person {
+    name: string;
+    age: number;
 
-userInput = 10;
-
-if(typeof userInput === 'string'){
-    userName = userInput;
+    greet(phrase: string): void;
 }
 
-// never type
+let user1: Person;
 
-const error = (message: string, code: number) => {
-    throw { message, code };
+user1 = {
+    name: 'Nitesh',
+    age: 26,
+    greet(phrase: string) {
+        console.log(`${phrase} ${this.name}`);
+    }
 };
 
-error('not found', 404);
+user1.greet('Hello!');
+
+interface Greetable {
+    readonly name: string;
+    greet(phrase: string): void;
+}
+
+class Person implements Greetable {
+    name: string;
+    constructor(n: string) {
+        this.name = n;
+    }
+    greet(phrase: string): void {
+        console.log(`${phrase} ${this.name}`);
+    }
+}
+
+const personObj = new Person('Nitesh');
+
+personObj.greet('Hello!');
+
+interface AddFn {
+    (a: number, b: number): number;
+    outputName?: string
+}
+
+let addFunc: AddFn;
+
+addFunc = (n1: number, n2: number) => {
+    return n1 + n2;
+};

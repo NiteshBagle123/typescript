@@ -7,5 +7,5 @@ const add = (a: Combinable, b: Combinable) => {
     return `${a} ${b}`
 }
 
-console.log(add('Nitesh', 'Bagle'));
+console.log(add(1, 2));
 console.log(add(1, 2));

@@ -1,22 +1,101 @@
+type Combinable = string | number;
+
+function add(a: Combinable, b: Combinable) {
+    if(typeof a === 'string' || typeof b === 'string'){
+        return a.toString() + b.toString(); 
+    }
+
+    return a + b;
+}
+
 type Admin = {
-    name: string;
-    priveleges: string[];
+    name: string,
+    privilege: string [] 
 }
 
 type Employee = {
-    name: string;
-    startDate: Date;
+    name: string,
+    startDate: Date
 }
 
-type ElevatedEmployee = Admin & Employee;
+type unknownEmployee = Employee | Admin ;
 
-const el: ElevatedEmployee = {
+function printEmployeeInformation(emp : unknownEmployee) {
+    console.log(emp.name);
+    if('privilege' in emp) {
+        console.log(emp.privilege);
+    }
+
+    if('startDate' in emp) {
+        console.log(emp.startDate);
+    }
+}
+
+printEmployeeInformation({
     name: 'Nitesh',
-    priveleges: ['create-server'],
-    startDate: new Date()
+    startDate: new Date(),
+    privilege: ['create-server']
+});
+
+class Car {
+    drive() {
+        console.log('Drive Car!')
+    }
 }
 
-type Combinable = string | number;
-type Numeric = number | boolean;
+class Truck {
+    drive() {
+        console.log('Drive Truck');
+    }
 
-type Universal = Combinable | Numeric;
+    loadCargo(amount: number) {
+        console.log('Loading cargo...!', amount);
+    }
+}
+
+type Vehicle = Car | Truck;
+
+const v1 = new Car();
+const v2 = new Truck();
+
+function useVehicle(vehicle: Vehicle) {
+    vehicle.drive();
+
+    if(vehicle instanceof Truck) {
+        vehicle.loadCargo(1000);
+    }
+}
+
+useVehicle(v1);
+useVehicle(v2);
+
+interface Bird {
+    type: 'bird',
+    flyingSpeed: number 
+}
+
+interface Horse {
+    type: 'horse',
+    runningSpeed: number
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+    if(animal.type === 'bird') {
+        return animal.flyingSpeed;
+    }
+
+    if(animal.type === 'horse') {
+        return animal.runningSpeed;
+    }
+}
+
+moveAnimal({ type: 'bird', flyingSpeed: 1000 });
+moveAnimal( { type: 'horse', runningSpeed: 100 });
+
+// const userInput = <HTMLInputElement> document.getElementById('user-input')!;
+const userInput = document.getElementById('user-input')! as HTMLInputElement;
+
+userInput.value = 'Hi there!';
+

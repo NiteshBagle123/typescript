@@ -99,3 +99,15 @@ const userInput = document.getElementById('user-input')! as HTMLInputElement;
 
 userInput.value = 'Hi there!';
 
+// index properties
+
+interface ErrorContainer {
+    [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+    email: 'dummy@xyz.com',
+    username: 'Test'
+}
+
+

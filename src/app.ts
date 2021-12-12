@@ -122,5 +122,18 @@ const optionalChainingObj = {
 
 console.log(optionalChainingObj ?.job ?.title);
 
+// nullish coalescing
+
+const nullishObj = {
+    title: 'Senior Engineer',
+    detail: {
+        job: 'Full stack developer',
+        description: 'Testing!!!'
+    }
+};
+
+console.log(nullishObj ?? 'DEFAULT');
+
+
 
 

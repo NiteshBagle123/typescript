@@ -1,48 +1,22 @@
-interface Person {
+type Admin = {
     name: string;
-    age: number;
-
-    greet(phrase: string): void;
+    priveleges: string[];
 }
 
-let user1: Person;
+type Employee = {
+    name: string;
+    startDate: Date;
+}
 
-user1 = {
+type ElevatedEmployee = Admin & Employee;
+
+const el: ElevatedEmployee = {
     name: 'Nitesh',
-    age: 26,
-    greet(phrase: string) {
-        console.log(`${phrase} ${this.name}`);
-    }
-};
-
-user1.greet('Hello!');
-
-interface Greetable {
-    readonly name: string;
-    greet(phrase: string): void;
+    priveleges: ['create-server'],
+    startDate: new Date()
 }
 
-class Person implements Greetable {
-    name: string;
-    constructor(n: string) {
-        this.name = n;
-    }
-    greet(phrase: string): void {
-        console.log(`${phrase} ${this.name}`);
-    }
-}
+type Combinable = string | number;
+type Numeric = number | boolean;
 
-const personObj = new Person('Nitesh');
-
-personObj.greet('Hello!');
-
-interface AddFn {
-    (a: number, b: number): number;
-    outputName?: string
-}
-
-let addFunc: AddFn;
-
-addFunc = (n1: number, n2: number) => {
-    return n1 + n2;
-};
+type Universal = Combinable | Numeric;

@@ -110,4 +110,17 @@ const errorBag: ErrorContainer = {
     username: 'Test'
 }
 
+// optional chaining
+const optionalChainingObj = {
+    id: 1,
+    name: 'Nitesh',
+    job: {
+        title: 'Senior Engineer',
+        description: 'Full stack developer'
+    }
+}
+
+console.log(optionalChainingObj ?.job ?.title);
+
+
 

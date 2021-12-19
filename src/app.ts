@@ -19,5 +19,14 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
 const mergeObj = merge({ name: 'Nitesh'}, { age: 26 });
 console.log(mergeObj);
 
+function counterAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let description = 'Got no value.';
+    if(element.length) {
+        description = `Got ${element.length} elements`;
+    }
+    return [element, description];
+}
+
+console.log(counterAndDescribe('Hi, there!'));
 
 

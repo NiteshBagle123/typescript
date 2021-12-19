@@ -29,4 +29,9 @@ function counterAndDescribe<T extends Lengthy>(element: T): [T, string] {
 
 console.log(counterAndDescribe('Hi, there!'));
 
+function extractAndConcat<T extends object, U extends keyof T>(obj: T, key: U) {
+    return obj[key];
+}
+
+console.log(extractAndConcat({ 1: 'a', 2: 'b' }, 2));
 
